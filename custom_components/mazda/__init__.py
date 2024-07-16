@@ -53,8 +53,7 @@ PLATFORMS = [
 
 async def with_timeout(task, timeout_seconds=30):
     """Run an async task with a timeout."""
-    async with asyncio.timeout(timeout_seconds):
-        return await task
+    return await asyncio.wait_for(task, timeout_seconds)
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
